@@ -1,0 +1,16 @@
+logging:
+  level:
+    root: warn
+    eu.profinit.manta.graphplayground: debug
+    eu.profinit.manta.graphplayground.service.Merger: info
+
+    org.springframework.boot: info
+    org.springframework.core: info
+    org.aspectj: debug
+
+    io.grpc: info
+    io.netty: info
+    org.reflections: info
+
+    org.neo4j: info
+    com.thinkaurelius: info

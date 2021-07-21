@@ -1,0 +1,102 @@
+<ul class="graph-diagram-markup" data-internal-scale="1.09" data-external-scale="1">
+  <li class="node" data-node-id="0" data-x="-636.4287805119778" data-y="-343.15440777682375">
+    <span class="caption">Resource</span><dl class="properties"><dt>name</dt><dd>res1</dd><dt>type</dt><dd>Teradata</dd></dl></li>
+  <li class="node" data-node-id="1" data-x="-1454.6437316334595" data-y="692.8166291123135"><dl class="properties"><dt>name</dt><dd>res1db1t1c1</dd><dt>type</dt><dd>Column</dd></dl></li>
+  <li class="node" data-node-id="2" data-x="-1131.2648712998139" data-y="692.8166291123135"><dl class="properties"><dt>name</dt><dd>res1db1t1c2</dd><dt>type</dt><dd>Column</dd></dl></li>
+  <li class="node" data-node-id="3" data-x="-898.6863757492202" data-y="941.5145644441654"><dl class="properties"><dt>name</dt><dd>res1db1t2c1</dd><dt>type</dt><dd>Column</dd></dl></li>
+  <li class="node" data-node-id="4" data-x="413.6180377575233" data-y="-835.5748237819848">
+    <span class="caption">SuperRoot</span>
+  </li>
+  <li class="node" data-node-id="5" data-x="154.19217979361142" data-y="-383.26771688898765">
+    <span class="caption">Resource</span><dl class="properties"><dt>name</dt><dd>res2</dd><dt>type</dt><dd>Teradata scripts</dd></dl></li>
+  <li class="node" data-node-id="6" data-x="948.9991439679341" data-y="-343.15440777682375">
+    <span class="caption">Resource</span><dl class="properties"><dt>name</dt><dd>res3</dd><dt>Type</dt><dd>Hive</dd></dl></li>
+  <li class="node" data-node-id="7" data-x="2055.800440867014" data-y="-87.6130932974158"><dl class="properties"><dt>name</dt><dd>res4d1</dd><dt>type</dt><dd>Directory</dd></dl></li>
+  <li class="node" data-node-id="8" data-x="-1274.7718505859375" data-y="388.94204669917394"><dl class="properties"><dt>name</dt><dd>res1db1t1</dd><dt>type</dt><dd>Table</dd></dl></li>
+  <li class="node" data-node-id="9" data-x="-564.3685472120934" data-y="941.5145644441654"><dl class="properties"><dt>name</dt><dd>res1db1t2c2</dd><dt>type</dt><dd>Column</dd></dl></li>
+  <li class="node" data-node-id="10" data-x="1797.4546447193898" data-y="91.40410540956967"><dl class="properties"><dt>name</dt><dd>res4d1d1</dd><dt>type</dt><dd>Directory</dd></dl></li>
+  <li class="node" data-node-id="11" data-x="-722.6241914241682" data-y="388.94204669917394"><dl class="properties"><dt>name</dt><dd>res1db1t2</dd><dt>type</dt><dd>Table</dd></dl></li>
+  <li class="node" data-node-id="12" data-x="-996.4800948396736" data-y="91.40410540956967"><dl class="properties"><dt>name</dt><dd>res1db1</dd><dt>type</dt><dd>Database</dd></dl></li>
+  <li class="node" data-node-id="13" data-x="-296.19241584987964" data-y="2.8336882328768382"><dl class="properties"><dt>name</dt><dd>res1db2</dd><dt>type</dt><dd>Database</dd></dl></li>
+  <li class="node" data-node-id="14" data-x="78.2203341142839" data-y="308.12074867738517"><dl class="properties"><dt>name</dt><dd>res2pr1</dd><dt>type</dt><dd>Procedure</dd></dl></li>
+  <li class="node" data-node-id="15" data-x="-71.07346700965813" data-y="672.0963134765625"><dl class="properties"><dt>name</dt><dd>res2pr1par1</dd><dt>type</dt><dd>Parameter</dd></dl></li>
+  <li class="node" data-node-id="16" data-x="259.0779183763977" data-y="642.1198764066082"><dl class="properties"><dt>name</dt><dd>res2pr1par2</dd><dt>type</dt><dd>Parameter</dd></dl></li>
+  <li class="node" data-node-id="17" data-x="2316.0647776192504" data-y="132.44439235302258"><dl class="properties"><dt>name</dt><dd>res4d1d2</dd><dt>type</dt><dd>Directory</dd></dl></li>
+  <li class="node" data-node-id="18" data-x="2344.0441356973893" data-y="642.1198764066082"><dl class="properties"><dt>name</dt><dd>res4d1d2c1</dd><dt>type</dt><dd>Column</dd></dl></li>
+  <li class="node" data-node-id="19" data-x="1797.4546447193898" data-y="388.94204669917394"><dl class="properties"><dt>name</dt><dd>res4d1d1t1</dd><dt>type</dt><dd>Table</dd></dl></li>
+  <li class="node" data-node-id="20" data-x="2055.800440867014" data-y="642.1198764066082"><dl class="properties"><dt>name</dt><dd>res4d1d1t1c2</dd><dt>type</dt><dd>Column</dd></dl></li>
+  <li class="node" data-node-id="21" data-x="1584.662062408728" data-y="672.0963134765625"><dl class="properties"><dt>name</dt><dd>res4d1d1t1c1</dd><dt>type</dt><dd>Column</dd></dl></li>
+  <li class="node" data-node-id="22" data-x="948.9991439679341" data-y="167.04503404547316"><dl class="properties"><dt>name</dt><dd>res3db1</dd><dt>type</dt><dd>Database</dd></dl></li>
+  <li class="node" data-node-id="23" data-x="948.9991439679341" data-y="514.1358753169351"><dl class="properties"><dt>name</dt><dd>res3db1t1</dd><dt>type</dt><dd>Table</dd></dl></li>
+  <li class="node" data-node-id="24" data-x="1182.0821365216443" data-y="968.8732400596674"><dl class="properties"><dt>name</dt><dd>res3db1t1c2</dd><dt>type</dt><dd>Column</dd></dl></li>
+  <li class="node" data-node-id="25" data-x="659.887220470188" data-y="989.9019232233715"><dl class="properties"><dt>name</dt><dd>res3db1t1c1</dd><dt>type</dt><dd>Column</dd></dl></li>
+  <li class="node" data-node-id="26" data-x="1704.9328512489205" data-y="-383.26771688898765">
+    <span class="caption">Resource</span><dl class="properties"><dt>name</dt><dd>res4</dd><dt>type</dt><dd>Oracle scripts</dd></dl></li>
+  <li class="relationship" data-from="0" data-to="4">
+    <span class="type">hasResource</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="4">
+    <span class="type">hasResource</span>
+  </li>
+  <li class="relationship" data-from="6" data-to="4">
+    <span class="type">hasResource</span>
+  </li>
+  <li class="relationship" data-from="1" data-to="8"></li>
+  <li class="relationship" data-from="2" data-to="8"></li>
+  <li class="relationship" data-from="3" data-to="11"></li>
+  <li class="relationship" data-from="9" data-to="11"></li>
+  <li class="relationship" data-from="11" data-to="12"></li>
+  <li class="relationship" data-from="8" data-to="12"></li>
+  <li class="relationship" data-from="12" data-to="0">
+    <span class="type">hasResource</span>
+  </li>
+  <li class="relationship" data-from="13" data-to="0">
+    <span class="type">hasResource</span>
+  </li>
+  <li class="relationship" data-from="14" data-to="13"></li>
+  <li class="relationship" data-from="15" data-to="14"></li>
+  <li class="relationship" data-from="16" data-to="14"></li>
+  <li class="relationship" data-from="14" data-to="5">
+    <span class="type">hasResource</span>
+  </li>
+  <li class="relationship" data-from="10" data-to="7"></li>
+  <li class="relationship" data-from="17" data-to="7"></li>
+  <li class="relationship" data-from="18" data-to="17"></li>
+  <li class="relationship" data-from="19" data-to="10"></li>
+  <li class="relationship" data-from="20" data-to="19"></li>
+  <li class="relationship" data-from="21" data-to="19"></li>
+  <li class="relationship" data-from="22" data-to="6">
+    <span class="type">hasResource</span>
+  </li>
+  <li class="relationship" data-from="23" data-to="22"></li>
+  <li class="relationship" data-from="24" data-to="23"></li>
+  <li class="relationship" data-from="25" data-to="23"></li>
+  <li class="relationship" data-from="7" data-to="26"></li>
+  <li class="relationship" data-from="26" data-to="4">
+    <span class="type">hasResource</span>
+  </li>
+  <li class="relationship" data-from="1" data-to="2">
+    <span class="type">d</span>
+  </li>
+  <li class="relationship" data-from="2" data-to="3">
+    <span class="type">d</span>
+  </li>
+  <li class="relationship" data-from="1" data-to="3">
+    <span class="type">f</span>
+  </li>
+  <li class="relationship" data-from="3" data-to="9">
+    <span class="type">d</span>
+  </li>
+  <li class="relationship" data-from="9" data-to="15">
+    <span class="type">d</span>
+  </li>
+  <li class="relationship" data-from="9" data-to="25">
+    <span class="type">d</span>
+  </li>
+  <li class="relationship" data-from="15" data-to="25">
+    <span class="type">f</span>
+  </li>
+  <li class="relationship" data-from="20" data-to="18">
+    <span class="type">d</span>
+  </li>
+</ul>

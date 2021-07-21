@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>eu.profinit.manta.graphplayground</groupId>
+    <artifactId>graph-db-playground</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.0</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <spring-boot.version>2.4.0</spring-boot.version>
+        <neo4j.version>4.1.3</neo4j.version>
+        <neo4j-driver.version>4.1.1</neo4j-driver.version>
+
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>5.7.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <profiles>
+        <profile>
+            <id>full-compile</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-aop</artifactId>
+                    <version>${spring-boot.version}</version>
+                </dependency>
+
+                <!-- Titan -->
+                <dependency>
+                    <groupId>com.thinkaurelius.titan</groupId>
+                    <artifactId>titan-core</artifactId>
+                    <version>0.4.4</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.javassist</groupId>
+                            <artifactId>javassist</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>com.thinkaurelius.titan</groupId>
+                    <artifactId>titan-persistit</artifactId>
+                    <version>0.4.4</version>
+                </dependency>
+                <dependency>
+                    <groupId>eu.profinit.manta</groupId>
+                    <artifactId>manta-dataflow-repository-connector-titan</artifactId>
+                    <version>1.30</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>*</groupId>
+                            <artifactId>*</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>eu.profinit.manta</groupId>
+                    <artifactId>manta-dataflow-repository-core</artifactId>
+                    <version>1.30</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>*</groupId>
+                            <artifactId>*</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <!-- Neo4j-->
+                <dependency>
+                    <groupId>org.neo4j.driver</groupId>
+                    <artifactId>neo4j-java-driver</artifactId>
+                    <version>${neo4j-driver.version}</version>
+                </dependency>
+                <!-- For stored procedure -->
+                <dependency>
+                    <groupId>org.neo4j</groupId>
+                    <artifactId>neo4j</artifactId>
+                    <version>${neo4j.version}</version>
+                    <!--            <scope>provided</scope>-->
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>slf4j-nop</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+
+                <!-- Utils-->
+                <dependency>
+                    <groupId>commons-cli</groupId>
+                    <artifactId>commons-cli</artifactId>
+                    <version>1.4</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-collections4</artifactId>
+                    <version>4.4</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient</artifactId>
+                    <version>4.5.12</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-compress</artifactId>
+                    <version>1.20</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.opencsv</groupId>
+                    <artifactId>opencsv</artifactId>
+                    <version>5.2</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-ext</artifactId>
+                    <version>1.7.30</version>
+                </dependency>
+
+                <!-- Test-->
+                <dependency>
+                    <groupId>org.neo4j.test</groupId>
+                    <artifactId>neo4j-harness</artifactId>
+                    <version>${neo4j.version}</version>
+                    <scope>test</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.junit.vintage</groupId>
+                            <artifactId>junit-vintage-engine</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>slf4j-nop</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.hamcrest</groupId>
+                    <artifactId>hamcrest</artifactId>
+                    <version>2.2</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>${maven-compiler-plugin.version}</version>
+                        <configuration>
+                            <source>11</source>
+                            <target>11</target>
+                            <!--                    <source>1.8</source>-->
+                            <!--                    <target>1.8</target>-->
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>stored-procedures</id>
+
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-aop</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <scope>compile</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                    <version>30.1-jre</version>
+                </dependency>
+
+                <dependency>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                    <version>1.15</version>
+                </dependency>
+
+                <!-- Neo4j-->
+                <dependency>
+                    <groupId>org.neo4j.driver</groupId>
+                    <artifactId>neo4j-java-driver</artifactId>
+                    <version>${neo4j-driver.version}</version>
+                    <scope>compile</scope>
+                </dependency>
+                <!-- For stored procedure -->
+                <dependency>
+                    <groupId>org.neo4j</groupId>
+                    <artifactId>neo4j</artifactId>
+                    <version>${neo4j.version}</version>
+                    <scope>provided</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>slf4j-nop</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+
+                <!-- Test-->
+                <dependency>
+                    <groupId>org.neo4j.test</groupId>
+                    <artifactId>neo4j-harness</artifactId>
+                    <version>${neo4j.version}</version>
+                    <scope>test</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.junit.vintage</groupId>
+                            <artifactId>junit-vintage-engine</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>slf4j-nop</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>org.hamcrest</groupId>
+                    <artifactId>hamcrest</artifactId>
+                    <version>2.2</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+
+            <build>
+                <finalName>manta-stored-procedures-${project.version}</finalName>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>${maven-compiler-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>default-compile</id>
+                                <phase>compile</phase>
+                                <configuration>
+                                    <includes>
+                                        <include>eu/profinit/manta/graphplayground/repository/stored/merger/StoredMerger.java
+                                        </include>
+                                        <include>
+                                            eu/profinit/manta/graphplayground/repository/Neo4jGraphSessionRepository.java
+                                        </include>
+                                        <include>
+                                            eu/profinit/manta/graphplayground/repository/merger/connector/SourceRootHandler.java
+                                        </include>
+                                        <include>
+                                            eu/profinit/manta/graphplayground/repository/merger/connector/SuperRootHandler.java
+                                        </include>
+                                        <include>
+                                            eu/profinit/manta/graphplayground/repository/merger/revision/RevisionRootHandler.java
+                                        </include>
+                                        <include>
+                                            eu/profinit/manta/graphplayground/repository/merger/revision/RevisionUtils.java
+                                        </include>
+                                    </includes>
+                                </configuration>
+                                <goals>
+                                    <goal>compile</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>default-testCompile</id>
+                                <phase>test-compile</phase>
+                                <configuration>
+                                    <testIncludes>
+                                        <include>
+                                            eu/profinit/manta/graphplayground/repository/merger/stored/StoredMergerProcedureTest.java
+                                        </include>
+                                    </testIncludes>
+                                </configuration>
+                                <goals>
+                                    <goal>testCompile</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <!--                        <configuration>-->
+                        <!--                            <excludes>-->
+                        <!--                                <exclude>**/*</exclude>-->
+                        <!--                            </excludes>-->
+                        <!--                        </configuration>-->
+                    </plugin>
+                    <plugin>
+                        <!-- This generates a jar-file with our procedure code,
+                             plus any dependencies marked as `compile` scope.
+                             This should then be deployed in the `plugins` directory
+                             of each Neo4j instance in your deployment.
+                             After a restart, the procedure is available for calling. -->
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <version>${maven-shade-plugin.version}</version>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>jakarta.*:*</exclude>
+                                    <exclude>ch.*:*</exclude>
+                                    <exclude>org.*:*</exclude>
+                                </excludes>
+                            </artifactSet>
+
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>dumps/**</exclude>
+                                        <exclude>*.yml</exclude>
+                                        <exclude>*.json</exclude>
+                                        <exclude>*.csv</exclude>
+                                        <exclude>*.xml</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
